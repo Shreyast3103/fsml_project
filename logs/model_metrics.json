@@ -1,0 +1,98 @@
+{
+    "logistic_regression": {
+        "validation": {
+            "accuracy": 0.9365930599369086,
+            "f1": 0.8137164040778498,
+            "confusion_matrix": [
+                [
+                    2530,
+                    175
+                ],
+                [
+                    26,
+                    439
+                ]
+            ],
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.99      0.94      0.96      2705\n           1       0.71      0.94      0.81       465\n\n    accuracy                           0.94      3170\n   macro avg       0.85      0.94      0.89      3170\nweighted avg       0.95      0.94      0.94      3170\n"
+        },
+        "test": {
+            "accuracy": 0.939268680445151,
+            "f1": 0.8203198494825964,
+            "confusion_matrix": [
+                [
+                    2518,
+                    162
+                ],
+                [
+                    29,
+                    436
+                ]
+            ],
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.99      0.94      0.96      2680\n           1       0.73      0.94      0.82       465\n\n    accuracy                           0.94      3145\n   macro avg       0.86      0.94      0.89      3145\nweighted avg       0.95      0.94      0.94      3145\n"
+        }
+    },
+    "random_forest": {
+        "validation": {
+            "accuracy": 0.9605678233438486,
+            "f1": 0.8663101604278075,
+            "confusion_matrix": [
+                [
+                    2640,
+                    65
+                ],
+                [
+                    60,
+                    405
+                ]
+            ],
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.98      0.98      0.98      2705\n           1       0.86      0.87      0.87       465\n\n    accuracy                           0.96      3170\n   macro avg       0.92      0.92      0.92      3170\nweighted avg       0.96      0.96      0.96      3170\n"
+        },
+        "test": {
+            "accuracy": 0.9529411764705882,
+            "f1": 0.8458333333333333,
+            "confusion_matrix": [
+                [
+                    2591,
+                    89
+                ],
+                [
+                    59,
+                    406
+                ]
+            ],
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.98      0.97      0.97      2680\n           1       0.82      0.87      0.85       465\n\n    accuracy                           0.95      3145\n   macro avg       0.90      0.92      0.91      3145\nweighted avg       0.95      0.95      0.95      3145\n"
+        }
+    },
+    "gradient_boosting": {
+        "validation": {
+            "accuracy": 0.9570977917981073,
+            "f1": 0.8478747203579419,
+            "confusion_matrix": [
+                [
+                    2655,
+                    50
+                ],
+                [
+                    86,
+                    379
+                ]
+            ],
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.97      0.98      0.98      2705\n           1       0.88      0.82      0.85       465\n\n    accuracy                           0.96      3170\n   macro avg       0.93      0.90      0.91      3170\nweighted avg       0.96      0.96      0.96      3170\n"
+        },
+        "test": {
+            "accuracy": 0.9538950715421304,
+            "f1": 0.8439181916038752,
+            "confusion_matrix": [
+                [
+                    2608,
+                    72
+                ],
+                [
+                    73,
+                    392
+                ]
+            ],
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.97      0.97      0.97      2680\n           1       0.84      0.84      0.84       465\n\n    accuracy                           0.95      3145\n   macro avg       0.91      0.91      0.91      3145\nweighted avg       0.95      0.95      0.95      3145\n"
+        }
+    }
+}

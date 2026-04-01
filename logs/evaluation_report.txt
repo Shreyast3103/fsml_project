@@ -1,0 +1,36 @@
+
+Model: logistic_regression
+
+VALIDATION:
+Accuracy: 0.9366
+F1: 0.8137
+Confusion Matrix: [[2530, 175], [26, 439]]
+
+TEST:
+Accuracy: 0.9393
+F1: 0.8203
+Confusion Matrix: [[2518, 162], [29, 436]]
+
+Model: random_forest
+
+VALIDATION:
+Accuracy: 0.9606
+F1: 0.8663
+Confusion Matrix: [[2640, 65], [60, 405]]
+
+TEST:
+Accuracy: 0.9529
+F1: 0.8458
+Confusion Matrix: [[2591, 89], [59, 406]]
+
+Model: gradient_boosting
+
+VALIDATION:
+Accuracy: 0.9571
+F1: 0.8479
+Confusion Matrix: [[2655, 50], [86, 379]]
+
+TEST:
+Accuracy: 0.9539
+F1: 0.8439
+Confusion Matrix: [[2608, 72], [73, 392]]
