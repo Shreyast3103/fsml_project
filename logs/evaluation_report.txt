@@ -23,14 +23,14 @@ Accuracy: 0.9529
 F1: 0.8458
 Confusion Matrix: [[2591, 89], [59, 406]]
 
-Model: gradient_boosting
+Model: xgboost
 
 VALIDATION:
-Accuracy: 0.9571
-F1: 0.8479
-Confusion Matrix: [[2655, 50], [86, 379]]
+Accuracy: 0.9543
+F1: 0.8350
+Confusion Matrix: [[2658, 47], [98, 367]]
 
 TEST:
-Accuracy: 0.9539
-F1: 0.8439
-Confusion Matrix: [[2608, 72], [73, 392]]
+Accuracy: 0.9520
+F1: 0.8364
+Confusion Matrix: [[2608, 72], [79, 386]]

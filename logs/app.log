@@ -20,3 +20,122 @@
 2026-04-01 15:41:30,005 - INFO - Prediction result: {'prediction': 0, 'prediction_label': 'healthy', 'failure_probability': 0.0}
 2026-04-01 16:15:28,962 - INFO - Received input: {'sensor_2': 600.0, 'sensor_3': 1500.0, 'sensor_4': 1300.0, 'sensor_7': 500.0, 'sensor_8': 2300.0, 'sensor_9': 8800.0, 'sensor_11': 60.0, 'sensor_12': 400.0, 'sensor_13': 2200.0, 'sensor_14': 7900.0, 'sensor_15': 12.0, 'sensor_17': 350.0, 'sensor_20': 50.0, 'sensor_21': 10.0}
 2026-04-01 16:15:29,418 - INFO - Prediction result: {'prediction': 0, 'prediction_label': 'healthy', 'failure_probability': 0.3787, 'confidence': 'low'}
+2026-04-02 14:11:54,819 - INFO - Received input: {'sensor_2': 641.82, 'sensor_3': 1589.7, 'sensor_4': 1400.6, 'sensor_7': 554.36, 'sensor_8': 2388.06, 'sensor_9': 9046.19, 'sensor_11': 47.47, 'sensor_12': 521.66, 'sensor_13': 2388.02, 'sensor_14': 8138.62, 'sensor_15': 8.4195, 'sensor_17': 391.0, 'sensor_20': 39.06, 'sensor_21': 23.419}
+2026-04-02 14:11:55,220 - INFO - Prediction result: {'prediction': 0, 'prediction_label': 'healthy', 'failure_probability': 0.0, 'confidence': 'low'}
+2026-04-02 14:30:44,923 - INFO - Training model: logistic_regression
+2026-04-02 14:30:45,031 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 14:30:45,031 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 14:30:45,031 - INFO - Training model: random_forest
+2026-04-02 14:30:48,171 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 14:30:48,171 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 14:30:48,171 - INFO - Training model: gradient_boosting
+2026-04-02 14:30:52,483 - INFO - gradient_boosting Validation F1: 0.8478747203579419
+2026-04-02 14:30:52,483 - INFO - gradient_boosting Test F1: 0.8439181916038752
+2026-04-02 14:30:52,483 - INFO - Training model: xgboost
+2026-04-02 14:30:53,237 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 14:30:53,237 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-02 14:36:00,736 - INFO - Training model: logistic_regression
+2026-04-02 14:36:00,811 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 14:36:00,811 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 14:36:00,816 - INFO - Training model: random_forest
+2026-04-02 14:36:03,695 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 14:36:03,696 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 14:36:03,697 - INFO - Training model: gradient_boosting
+2026-04-02 14:36:07,884 - INFO - gradient_boosting Validation F1: 0.8478747203579419
+2026-04-02 14:36:07,885 - INFO - gradient_boosting Test F1: 0.8439181916038752
+2026-04-02 14:36:07,887 - INFO - Training model: xgboost
+2026-04-02 14:36:08,511 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 14:36:08,511 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-02 14:55:14,068 - INFO - Training model: logistic_regression
+2026-04-02 14:55:14,152 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 14:55:14,152 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 14:55:14,152 - INFO - Training model: random_forest
+2026-04-02 14:55:16,428 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 14:55:16,428 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 14:55:16,428 - INFO - Training model: gradient_boosting
+2026-04-02 14:55:21,780 - INFO - gradient_boosting Validation F1: 0.8478747203579419
+2026-04-02 14:55:21,780 - INFO - gradient_boosting Test F1: 0.8439181916038752
+2026-04-02 14:55:21,780 - INFO - Training model: xgboost
+2026-04-02 14:55:22,637 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 14:55:22,637 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-02 14:55:56,499 - INFO - Training model: logistic_regression
+2026-04-02 14:55:56,579 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 14:55:56,579 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 14:55:56,595 - INFO - Training model: random_forest
+2026-04-02 14:55:59,147 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 14:55:59,147 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 14:55:59,147 - INFO - Training model: xgboost
+2026-04-02 14:55:59,980 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 14:55:59,980 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-02 15:02:14,260 - INFO - Training model: logistic_regression
+2026-04-02 15:02:14,324 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 15:02:14,324 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 15:02:14,324 - INFO - Training model: random_forest
+2026-04-02 15:02:16,533 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 15:02:16,533 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 15:02:16,546 - INFO - Training model: xgboost
+2026-04-02 15:02:17,721 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 15:02:17,721 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-02 15:09:04,041 - INFO - Training model: logistic_regression
+2026-04-02 15:09:04,104 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 15:09:04,104 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 15:09:04,120 - INFO - Training model: random_forest
+2026-04-02 15:09:06,138 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 15:09:06,138 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 15:09:06,138 - INFO - Training model: xgboost
+2026-04-02 15:09:06,724 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 15:09:06,724 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-02 15:10:46,433 - INFO - Training model: logistic_regression
+2026-04-02 15:10:46,496 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 15:10:46,496 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 15:10:46,496 - INFO - Training model: random_forest
+2026-04-02 15:10:48,595 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 15:10:48,595 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 15:10:48,595 - INFO - Training model: xgboost
+2026-04-02 15:10:49,184 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 15:10:49,184 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-02 15:11:16,033 - INFO - Training model: logistic_regression
+2026-04-02 15:11:16,112 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 15:11:16,112 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 15:11:16,115 - INFO - Training model: random_forest
+2026-04-02 15:11:18,847 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 15:11:18,847 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 15:11:18,860 - INFO - Training model: xgboost
+2026-04-02 15:11:19,462 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 15:11:19,462 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-02 15:11:45,730 - INFO - Training model: logistic_regression
+2026-04-02 15:11:45,811 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 15:11:45,811 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 15:11:45,811 - INFO - Training model: random_forest
+2026-04-02 15:11:48,224 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 15:11:48,226 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 15:11:48,226 - INFO - Training model: xgboost
+2026-04-02 15:11:49,146 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 15:11:49,146 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-02 15:20:58,983 - INFO - Training model: logistic_regression
+2026-04-02 15:20:59,060 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 15:20:59,060 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 15:20:59,063 - INFO - Training model: random_forest
+2026-04-02 15:21:01,108 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 15:21:01,108 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 15:21:01,109 - INFO - Training model: xgboost
+2026-04-02 15:21:01,721 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 15:21:01,721 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-02 15:37:07,294 - INFO - Training model: logistic_regression
+2026-04-02 15:37:07,370 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 15:37:07,370 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 15:37:07,377 - INFO - Training model: random_forest
+2026-04-02 15:37:09,917 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 15:37:09,917 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 15:37:09,917 - INFO - Training model: xgboost
+2026-04-02 15:37:10,711 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 15:37:10,711 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-02 15:39:45,446 - INFO - Training model: logistic_regression
+2026-04-02 15:39:45,525 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-02 15:39:45,525 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-02 15:39:45,525 - INFO - Training model: random_forest
+2026-04-02 15:39:47,567 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-02 15:39:47,567 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-02 15:39:47,567 - INFO - Training model: xgboost
+2026-04-02 15:39:48,154 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-02 15:39:48,154 - INFO - xgboost Test F1: 0.8364030335861322

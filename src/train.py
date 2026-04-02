@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+from xgboost import XGBClassifier
 from pathlib import Path
 from typing import Any
 from src.utils import logger 
@@ -61,29 +62,39 @@ def build_models(X_train: pd.DataFrame) -> dict[str, Pipeline]:
     ]
 
     models = {
-        "logistic_regression": Pipeline(common_steps + [
-            ("model", LogisticRegression(
-                max_iter=1500,
-                class_weight="balanced",
-                random_state=42
-            )),
-        ]),
-        "random_forest": Pipeline(common_steps + [
-            ("model", RandomForestClassifier(
-                n_estimators=400,          # more trees → better learning
-                max_depth=15,              # slightly deeper trees
-                min_samples_split=5,       # prevents overfitting
-                min_samples_leaf=2,
-                max_features="sqrt",       # standard best practice
-                class_weight="balanced",
-                random_state=42,
-                n_jobs=-1,
-            )),
-        ]),
-        "gradient_boosting": Pipeline(common_steps + [
-            ("model", GradientBoostingClassifier(random_state=42)),
-        ]),
-    }
+    "logistic_regression": Pipeline(common_steps + [
+        ("model", LogisticRegression(
+            max_iter=1500,
+            class_weight="balanced",
+            random_state=42
+        )),
+    ]),
+
+    "random_forest": Pipeline(common_steps + [
+        ("model", RandomForestClassifier(
+            n_estimators=400,
+            max_depth=15,
+            min_samples_split=5,
+            min_samples_leaf=2,
+            max_features="sqrt",
+            class_weight="balanced",
+            random_state=42,
+            n_jobs=-1,
+        )),
+    ]),
+    "xgboost": Pipeline(common_steps + [
+        ("model", XGBClassifier(
+            n_estimators=300,
+            max_depth=6,
+            learning_rate=0.1,
+            subsample=0.8,
+            colsample_bytree=0.8,
+            eval_metric="logloss",
+            random_state=42,
+            n_jobs=-1
+        )),
+    ]),
+}
     return models
 
 
@@ -105,8 +116,22 @@ def get_feature_documentation() -> dict[str, str]:
         ),
     }
 
+def print_metrics(name, val_metrics, test_metrics):
+    print(f"\n==============================")
+    print(f"Model: {name}")
+    print(f"------------------------------")
 
-def train_and_select_best_model() -> tuple[str, Pipeline, dict[str, Any]]:
+    print("VALIDATION:")
+    print(f"Accuracy: {val_metrics['accuracy']:.4f}")
+    print(f"F1: {val_metrics['f1']:.4f}")
+    print(f"Confusion Matrix: {val_metrics['confusion_matrix']}")
+
+    print("\nTEST:")
+    print(f"Accuracy: {test_metrics['accuracy']:.4f}")
+    print(f"F1: {test_metrics['f1']:.4f}")
+    print(f"Confusion Matrix: {test_metrics['confusion_matrix']}")
+
+def train_and_select_best_model() -> tuple[str, Pipeline, dict]:
     train_df, val_df, test_df = load_processed_splits()
 
     X_train, y_train = split_features_target(train_df)
@@ -115,19 +140,21 @@ def train_and_select_best_model() -> tuple[str, Pipeline, dict[str, Any]]:
 
     models = build_models(X_train)
 
-    all_results: dict[str, Any] = {}
+    all_results = {}
     best_name = ""
-    best_model: Pipeline | None = None
+    best_model = None
     best_val_f1 = -1.0
 
     for name, pipeline in models.items():
         print(f"\nTraining model: {name}")
         logger.info(f"Training model: {name}")
+
         pipeline.fit(X_train, y_train)
 
         val_metrics = evaluate_classifier(pipeline, X_val, y_val, threshold=0.4)
         test_metrics = evaluate_classifier(pipeline, X_test, y_test, threshold=0.4)
-        logger.info(f"{name} Validation F1: {val_metrics['f1']}")  
+
+        logger.info(f"{name} Validation F1: {val_metrics['f1']}")
         logger.info(f"{name} Test F1: {test_metrics['f1']}")
 
         all_results[name] = {
@@ -135,9 +162,22 @@ def train_and_select_best_model() -> tuple[str, Pipeline, dict[str, Any]]:
             "test": test_metrics,
         }
 
-        print(f"Validation F1-score: {val_metrics['f1']:.4f}")
-        print(f"Test F1-score: {test_metrics['f1']:.4f}")
+        # Clean formatted output
+        print(f"\n==============================")
+        print(f"Model: {name}")
+        print(f"------------------------------")
 
+        print("VALIDATION:")
+        print(f"Accuracy: {val_metrics['accuracy']:.4f}")
+        print(f"F1: {val_metrics['f1']:.4f}")
+        print(f"Confusion Matrix: {val_metrics['confusion_matrix']}")
+
+        print("\nTEST:")
+        print(f"Accuracy: {test_metrics['accuracy']:.4f}")
+        print(f"F1: {test_metrics['f1']:.4f}")
+        print(f"Confusion Matrix: {test_metrics['confusion_matrix']}")
+
+        # Best model selection
         if val_metrics["f1"] > best_val_f1:
             best_val_f1 = val_metrics["f1"]
             best_name = name
@@ -146,6 +186,7 @@ def train_and_select_best_model() -> tuple[str, Pipeline, dict[str, Any]]:
     if best_model is None:
         raise RuntimeError("No model was trained successfully.")
 
+    # Save artifacts
     save_pickle(best_model, BEST_MODEL_PATH)
     save_json(all_results, METRICS_PATH)
     save_json(get_feature_documentation(), FEATURE_NOTE_PATH)
@@ -153,11 +194,6 @@ def train_and_select_best_model() -> tuple[str, Pipeline, dict[str, Any]]:
 
     return best_name, best_model, all_results
 
-
 if __name__ == "__main__":
     best_name, _, results = train_and_select_best_model()
     print(f"\nBest model: {best_name}")
-    logger.info(f"Best model selected: {best_name}")
-    print(f"Validation F1: {results[best_name]['validation']['f1']:.4f}")
-    print(f"Test F1: {results[best_name]['test']['f1']:.4f}")
-    print(f"Saved best model to: {BEST_MODEL_PATH}")

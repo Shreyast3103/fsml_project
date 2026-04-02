@@ -7,11 +7,25 @@ def run_pipeline():
     train_df, val_df, test_df = preprocess_pipeline("data/raw/train_FD001.txt")
     save_processed_data(train_df, val_df, test_df)
 
-    print("Step 2: Training...")
+    print("\nStep 2: Training...")
     best_name, _, results = train_and_select_best_model()
 
-    print(f"\nBest model: {best_name}")
-    print(f"Validation F1: {results[best_name]['validation']['f1']:.4f}")
+    best_val = results[best_name]["validation"]
+    best_test = results[best_name]["test"]
+
+    print("\n==============================")
+    print("🏆 FINAL BEST MODEL:", best_name)
+    print("==============================")
+
+    print("\n📊 VALIDATION PERFORMANCE:")
+    print(f"Accuracy: {best_val['accuracy']:.4f}")
+    print(f"F1 Score: {best_val['f1']:.4f}")
+    print(f"Confusion Matrix: {best_val['confusion_matrix']}")
+
+    print("\n📊 TEST PERFORMANCE:")
+    print(f"Accuracy: {best_test['accuracy']:.4f}")
+    print(f"F1 Score: {best_test['f1']:.4f}")
+    print(f"Confusion Matrix: {best_test['confusion_matrix']}")
 
 
 if __name__ == "__main__":
