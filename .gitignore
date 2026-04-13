@@ -1,0 +1,29 @@
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+logs/
+*.log
+
+# Data (optional)
+data/raw/
+*.csv
+!data/sample_processed.csv
+
+# Model files
+*.pkl
+!models/model_v1.pkl
+
+# IDE
+.idea/
+
+# Misc
+test_preprocess.py

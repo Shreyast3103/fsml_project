@@ -143,3 +143,27 @@
 2026-04-02 15:51:16,923 - INFO - Prediction result: {'prediction': 0, 'prediction_label': 'healthy', 'failure_probability': 0.0, 'confidence': 'low'}
 2026-04-02 16:07:01,600 - INFO - Received input: {'sensor_2': 600.0, 'sensor_3': 1500.0, 'sensor_4': 1300.0, 'sensor_7': 500.0, 'sensor_8': 2300.0, 'sensor_9': 8800.0, 'sensor_11': 60.0, 'sensor_12': 400.0, 'sensor_13': 2200.0, 'sensor_14': 7900.0, 'sensor_15': 12.0, 'sensor_17': 350.0, 'sensor_20': 50.0, 'sensor_21': 10.0}
 2026-04-02 16:07:01,783 - INFO - Prediction result: {'prediction': 0, 'prediction_label': 'healthy', 'failure_probability': 0.3787, 'confidence': 'low'}
+2026-04-03 19:10:13,311 - INFO - Training model: logistic_regression
+2026-04-03 19:10:13,393 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-03 19:10:13,393 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-03 19:10:13,394 - INFO - Training model: random_forest
+2026-04-03 19:10:15,738 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-03 19:10:15,738 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-03 19:10:15,738 - INFO - Training model: xgboost
+2026-04-03 19:10:16,887 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-03 19:10:16,889 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-13 14:53:45,994 - INFO - Training model: logistic_regression
+2026-04-13 14:53:46,097 - INFO - logistic_regression Validation F1: 0.8137164040778498
+2026-04-13 14:53:46,097 - INFO - logistic_regression Test F1: 0.8203198494825964
+2026-04-13 14:53:46,111 - INFO - Training model: random_forest
+2026-04-13 14:53:48,837 - INFO - random_forest Validation F1: 0.8663101604278075
+2026-04-13 14:53:48,837 - INFO - random_forest Test F1: 0.8458333333333333
+2026-04-13 14:53:48,837 - INFO - Training model: xgboost
+2026-04-13 14:53:49,700 - INFO - xgboost Validation F1: 0.8350398179749715
+2026-04-13 14:53:49,700 - INFO - xgboost Test F1: 0.8364030335861322
+2026-04-13 14:57:44,762 - INFO - Received input: {'sensor_2': 641.82, 'sensor_3': 1589.7, 'sensor_4': 1400.6, 'sensor_7': 554.36, 'sensor_8': 2388.06, 'sensor_9': 9046.19, 'sensor_11': 47.47, 'sensor_12': 521.66, 'sensor_13': 2388.02, 'sensor_14': 8138.62, 'sensor_15': 8.4195, 'sensor_17': 391.0, 'sensor_20': 39.06, 'sensor_21': 23.419}
+2026-04-13 14:57:44,976 - INFO - Prediction result: {'prediction': 0, 'prediction_label': 'healthy', 'failure_probability': 0.0, 'confidence': 'low'}
+2026-04-13 14:57:46,923 - INFO - Received input: {'sensor_2': 641.82, 'sensor_3': 1589.7, 'sensor_4': 1400.6, 'sensor_7': 554.36, 'sensor_8': 2388.06, 'sensor_9': 9046.19, 'sensor_11': 47.47, 'sensor_12': 521.66, 'sensor_13': 2388.02, 'sensor_14': 8138.62, 'sensor_15': 8.4195, 'sensor_17': 391.0, 'sensor_20': 39.06, 'sensor_21': 23.419}
+2026-04-13 14:57:47,100 - INFO - Prediction result: {'prediction': 0, 'prediction_label': 'healthy', 'failure_probability': 0.0, 'confidence': 'low'}
+2026-04-13 14:58:14,868 - INFO - Received input: {'sensor_2': 600.0, 'sensor_3': 1500.0, 'sensor_4': 1300.0, 'sensor_7': 500.0, 'sensor_8': 2300.0, 'sensor_9': 8800.0, 'sensor_11': 60.0, 'sensor_12': 400.0, 'sensor_13': 2200.0, 'sensor_14': 7900.0, 'sensor_15': 12.0, 'sensor_17': 350.0, 'sensor_20': 50.0, 'sensor_21': 10.0}
+2026-04-13 14:58:15,032 - INFO - Prediction result: {'prediction': 0, 'prediction_label': 'healthy', 'failure_probability': 0.3787, 'confidence': 'low'}

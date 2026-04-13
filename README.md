@@ -1,188 +1,273 @@
-\#  Industrial Equipment Failure Prediction for Predictive Maintenance
+# Industrial Equipment Failure Prediction for Predictive Maintenance
 
+This project implements a machine learning pipeline for predicting equipment failures using the NASA CMAPSS FD001 dataset. It includes data preprocessing, feature engineering, model training, evaluation, and deployment via a FastAPI web service.
 
+## Dataset
 
-\---
+**NASA CMAPSS FD001 dataset**  
+Link: https://www.kaggle.com/datasets/bishals098/nasa-turbofan-engine-degradation-simulation
 
+The dataset contains sensor readings from turbofan engines. Download the FD001 dataset and place it in:
 
+```
+data/raw/train_FD001.txt
+```
 
-\##  Overview
+## Project Structure
 
-Predictive maintenance helps prevent unexpected machine failures and reduces operational costs in industrial systems.
-This project builds an \*\*end-to-end Machine Learning pipeline\*\* to predict whether an engine is likely to fail soon using sensor data from turbofan engines.
+```
+fsml_project/
+│── app/
+│   ├── app.py              # FastAPI application
+│   └── schema.py           # Pydantic models for API
+│
+├── data/
+│   ├── raw/
+│   │   └── train_FD001.txt # Raw dataset
+│   └── processed/
+│       ├── train.csv       # Processed training data
+│       ├── val.csv         # Processed validation data
+│       └── test.csv        # Processed test data
+│
+├── logs/
+│   ├── app.log             # Application logs
+│   ├── evaluation_report.txt # Model evaluation results
+│   ├── feature_engineering_notes.json # Feature documentation
+│   └── model_metrics.json  # Detailed metrics
+│
+├── models/
+│   └── model_v1.pkl        # Trained model
+│
+├── pipeline/
+│   └── pipeline.py         # End-to-end pipeline
+│
+├── src/
+│   ├── data_loader.py      # Data loading utilities
+│   ├── preprocess.py       # Data preprocessing
+│   ├── features.py         # Feature engineering
+│   ├── train.py            # Model training
+│   ├── evaluate.py         # Model evaluation
+│   ├── predict.py          # Inference pipeline
+│   └── utils.py            # Utility functions
+│
+├── config.yaml             # Configuration (currently empty)
+├── Dockerfile              # Docker configuration (currently empty)
+├── requirements.txt        # Python dependencies
+└── README.md
+```
 
+## Installation
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/saiakshay2002/fsml_project_08.git
+   cd fsml_project_08
+   ```
 
-\---
+2. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-\##  Objectives
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-\- Process raw sensor data  
+4. Dataset Handling
+   ```bash
+   The dataset is NOT stored in the repository to keep it lightweight.
 
-\- Compute Remaining Useful Life (RUL)  
+   Instead, the dataset is automatically downloaded during pipeline execution from Google Drive.
 
-\- Convert to binary classification (failure vs healthy)  
+   - Source: NASA CMAPSS FD001 dataset
+   - Download is handled inside `pipeline/pipeline.py` using `gdown`
 
-\- Engineer meaningful features  
+   When you run the pipeline, the dataset will be downloaded automatically to:
 
-\- Train multiple ML models  
+   data/raw/train_FD001.txt
+   ```
 
-\- Select the best model using F1-score  
+## Usage
 
-\- Deploy predictions using FastAPI  
+### Step-by-Step Workflow
 
-\---
+#### 1. Data Preprocessing
 
-
-\##  Dataset
-
-We use the \*\*NASA CMAPSS FD001 dataset\*\*
-Link: https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/
-Download the FD001 dataset and place it here:
+Run the preprocessing pipeline to clean and prepare the data:
 
 ```bash
-data/raw/train\_FD001.txt
+python -m src.preprocess
+```
 
+This will:
+- Load raw data
+- Compute Remaining Useful Life (RUL)
+- Add binary failure labels (threshold = 30 cycles)
+- Split data by engine to prevent data leakage
+- Remove low-variance features
+- Save processed data to `data/processed/`
 
+#### 2. Model Training
 
-\## Project Structure
-fsml\_project/
+Train multiple models and select the best one:
 
-│── app/
+```bash
+python src/train.py
+```
 
-│   ├── app.py
+This will:
+- Load processed data
+- Train Logistic Regression, Random Forest, and XGBoost models
+- Evaluate on validation set
+- Select best model based on F1-score
+- Save best model to `models/model_v1.pkl`
+- Save metrics to `logs/model_metrics.json`
+- Save evaluation report to `logs/evaluation_report.txt`
 
-│   └── schema.py
+#### 3. Model Evaluation
 
-│
+Check the evaluation results:
 
-├── data/
+```bash
+cat logs/evaluation_report.txt
+```
 
-│   ├── raw/
+#### 4. Run Full Pipeline
 
-│   └── processed/
+Alternatively, run the entire pipeline in one command:
 
-│
-
-├── logs/
-
-│   └── app.log
-
-│
-
-├── models/
-
-│   └── model\_v1.pkl
-
-│
-
-├── pipeline/
-
-│   └── pipeline.py
-
-│
-
-├── src/
-
-│   ├── data\_loader.py
-
-│   ├── preprocess.py
-
-│   ├── features.py
-
-│   ├── train.py
-
-│   ├── evaluate.py
-
-│   ├── predict.py
-
-│   └── utils.py
-
-│
-
-├── notebooks/
-
-├── requirements.txt
-
-├── Dockerfile
-
-├── config.yaml
-
-└── README.md
-
-
-
-Preprocessing
-
-from src.preprocess import preprocess\_pipeline
-
-train\_df, val\_df, test\_df = preprocess\_pipeline("data/raw/train\_FD001.txt")
-
-
-
-\##Feature Engineering
-
-from src.features import add\_features
-
-train\_df = add\_features(train\_df)
-val\_df = add\_features(val\_df)
-test\_df = add\_features(test\_df)
-
-
-
-\##Model Training
-
-| Model               | F1 Score |
-
-| ------------------- | -------- |
-
-| Logistic Regression | \~0.81    |
-
-| Gradient Boosting   | \~0.84    |
-
-| Random Forest      | \~0.86    |
-
-
-
-\##API Deployment (FastAPI)
-
-uvicorn app.app:app --reload
-
-
-
-\##Docker Setup
-
-Build Image
-
-docker build -t fsml\_project .
-
-Run Container
-
-docker run -p 8000:8000 fsml\_project
-
-
-
-Open: http://localhost:8000/docs
-
-
-
-\##Full Pipeline
-
-Run everything in one command:
-
+```bash
 python -m pipeline.pipeline
+```
 
-Pipeline Flow
+### API Deployment
 
-Raw Data → Preprocessing → Feature Engineering → Training → Evaluation → Model Saving
+#### Start the FastAPI server:
 
- Outputs
+```bash
+uvicorn app.app:app --host 127.0.0.1 --port 8000 --reload
+```
 
-Processed data → data/processed/
+#### Test the API:
 
-Model → models/model\_v1.pkl
+- Open Swagger UI: http://127.0.0.1:8000/docs
+- Or use curl:
 
-Logs → logs/app.log
+```bash
+curl -X POST "http://127.0.0.1:8000/docs" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "sensor_2": 642.0,
+       "sensor_3": 1589.0,
+       "sensor_4": 1400.0,
+       "sensor_7": 554.0,
+       "sensor_8": 2388.0,
+       "sensor_9": 9056.0,
+       "sensor_11": 47.0,
+       "sensor_12": 521.0,
+       "sensor_13": 2388.0,
+       "sensor_14": 8138.0,
+       "sensor_15": 8.0,
+       "sensor_17": 392.0,
+       "sensor_20": 39.0,
+       "sensor_21": 23.0
+     }'
+```
+
+Sample  response:
+```json
+{
+  "prediction": 0,
+  "prediction_label": "healthy",
+  "failure_probability": 0.1234,
+  "confidence": "low"
+}
+```
+## Requirements
+
+- Python 3.8+
+- pandas==2.2.2
+- numpy==1.26.4
+- scikit-learn==1.4.2
+- xgboost==3.2.0
+- fastapi (for API)
+- uvicorn (for serving API)
+
+## Logging
+
+All operations are logged to `logs/app.log`. Model training and API requests are logged with timestamps.
+
+## Docker Deployment
+
+### Build Docker Image
+
+```bash
+docker build -t ml-model-app .
+
+docker run -p 8000:8000 ml-model-app
+
+```
+---
 
 
+## CI/CD Pipeline (GitHub Actions)
 
+Workflow file:
+
+.github/workflows/main.yml
+
+### Pipeline Steps
+
+On every push to the main branch:
+
+- Install dependencies
+- Run ML pipeline (pipeline/pipeline.py)
+- Download dataset automatically
+- Train model
+- Build Docker image
+
+## End-to-End Pipeline
+
+Run full pipeline:
+
+```bash
+python pipeline/pipeline.py
+```
+
+
+---
+
+## 📦 Model Versioning
+
+```markdown
+## Model Versioning
+
+Model is saved as:
+
+models/model_v1.pkl
+```
+
+## Logging
+
+Logs are stored in:
+
+logs/app.log
+
+### Includes
+
+- Pipeline execution logs
+- Training logs
+- API request logs
+
+## Project Highlights
+
+- End-to-end ML pipeline
+- FastAPI deployment
+- Docker containerization
+- CI/CD using GitHub Actions
+- Dynamic dataset download
+- Model versioning
+- Logging system
+- Error logs
