@@ -190,3 +190,20 @@
 2026-04-14 00:00:22,181 - INFO - Prediction result: {'prediction': 0, 'prediction_label': 'healthy', 'failure_probability': 0.0001, 'confidence': 'low', 'predicted_rul': 118.24, 'rul_based_prediction': 'healthy'}
 2026-04-14 00:00:45,295 - INFO - Received input: {'op_setting_1': 0.003, 'op_setting_2': 0.0, 'op_setting_3': 100.0, 'sensor_1': 520.5, 'sensor_2': 645.0, 'sensor_3': 1605.0, 'sensor_4': 1425.0, 'sensor_5': 15.2, 'sensor_6': 22.0, 'sensor_7': 560.0, 'sensor_8': 2395.0, 'sensor_9': 9100.0, 'sensor_10': 1.5, 'sensor_11': 55.0, 'sensor_12': 500.0, 'sensor_13': 2395.0, 'sensor_14': 8200.0, 'sensor_15': 9.2, 'sensor_16': 0.04, 'sensor_17': 400.0, 'sensor_18': 2395.0, 'sensor_19': 100.0, 'sensor_20': 42.0, 'sensor_21': 22.0}
 2026-04-14 00:00:45,463 - INFO - Prediction result: {'prediction': 1, 'prediction_label': 'near_failure', 'failure_probability': 0.7889, 'confidence': 'high', 'predicted_rul': 11.72, 'rul_based_prediction': 'near_failure'}
+2026-04-15 19:55:19,246 - INFO - Training model: logistic_regression
+2026-04-15 19:55:19,342 - INFO - Training model: random_forest
+2026-04-15 19:55:20,920 - INFO - Training model: xgboost
+2026-04-15 19:55:22,658 - INFO - Optimal threshold: 0.312
+2026-04-15 20:15:33,499 - INFO - generated new fontManager
+2026-04-15 20:17:07,541 - INFO - Training model: logistic_regression
+2026-04-15 20:17:07,628 - INFO - Training model: random_forest
+2026-04-15 20:17:09,639 - INFO - Training model: xgboost
+2026-04-15 20:17:11,130 - INFO - Optimal threshold: 0.312
+2026-04-15 20:18:49,558 - INFO - Training model: logistic_regression
+2026-04-15 20:18:49,662 - INFO - Training model: random_forest
+2026-04-15 20:18:51,821 - INFO - Training model: xgboost
+2026-04-15 20:18:52,834 - INFO - Optimal threshold: 0.312
+2026-04-15 20:37:16,378 - INFO - Training model: logistic_regression
+2026-04-15 20:37:16,553 - INFO - Training model: random_forest
+2026-04-15 20:37:18,315 - INFO - Training model: xgboost
+2026-04-15 20:37:20,058 - INFO - Optimal threshold: 0.312
